@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 	
-    <arg name="model" default="$(find erl2)/urdf/m2wr_arm2.xacro" />
+
 
   <arg name="gazebo_gui" default="true"/>
   <arg name="paused" default="false"/>
@@ -44,32 +44,9 @@
     <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen"/>
   </group>
 	
-	<!-- Load the URDF into the ROS Parameter Server -->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
-	
 	 <node name="simulationn" pkg ="erl2" type="simulationn" output="screen" /> 
-		
-    <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" ></node>
-	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /> 
+	 
 	  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find erl2)/config/sim.rviz" /> 
-
-  
-  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-	args="-urdf -model robot1 -param robot_description -z 0.05"/> 
-	
-	
-   <rosparam file="$(find erl2)/config/motors_config.yaml" command="load" ns="/m2wr" />
-
-   <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="--namespace=/m2wr
-        joint_state_controller
-        joint1_position_controller
-        joint2_position_controller
-        joint3_position_controller
-        joint4_position_controller
-        rgrip_position_controller
-        lgrip_position_controller
-        --shutdown-timeout 3">
-    </node>
-
+	  
 
 </launch>
