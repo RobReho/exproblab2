@@ -1,6 +1,10 @@
 <?xml version="1.0"?>
 <launch>
-
+<!-- hide warning messages -->
+ <node pkg="rosconsole" type="rosconsole" name="rosconsole" output="screen">
+    <param name="default_filter" value="(!WARN)"/>
+  </node>
+  
   <!-- By default, we do not start a database (it can be large) -->
   <arg name="db" default="false" />
   <!-- Allow user to specify database location -->
@@ -63,15 +67,19 @@
   </include>
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
-  <include file="$(find cluedo_robot_moveit)/launch/moveit_rviz.launch">
+  <!--<include file="$(find cluedo_robot_moveit)/launch/moveit_rviz.launch">
     <arg name="rviz_config" value="$(find cluedo_robot_moveit)/launch/moveit.rviz"/>
     <arg name="debug" value="$(arg debug)"/>
-  </include>
+  </include>-->
 
   <!-- If database loading was enabled, start mongodb as well -->
   <include file="$(find cluedo_robot_moveit)/launch/default_warehouse_db.launch" if="$(arg db)">
     <arg name="moveit_warehouse_database_path" value="$(arg db_path)"/>
   </include>
 
+  <!-- Launch action server nodes -->
+    <node name="go_to_point" pkg="erl2" type ="go_to_point.py"/>
+   <!-- <node name="simulation" pkg="erl2" type ="simulation.py"/>      launched with assignment.launch-->
 </launch>
+
 

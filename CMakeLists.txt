@@ -14,6 +14,13 @@ find_package(catkin REQUIRED COMPONENTS
   visualization_msgs
   gazebo_msgs
   message_generation
+  urdf
+  actionlib
+  sensor_msgs
+  actionlib_msgs
+  moveit_ros_planning_interface
+  rosplan_planning_system
+  geometry_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -64,15 +71,16 @@ add_service_files(
  )
 
 ## Generate actions in the 'action' folder
-# add_action_files(
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
+ add_action_files(
+   FILES
+   Planning.action
+ )
 
 ## Generate added messages and services with any dependencies listed here
  generate_messages(
    DEPENDENCIES
+    actionlib_msgs
+    geometry_msgs 
 #   std_msgs
  )
 
@@ -123,6 +131,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/erl2.cpp
@@ -136,7 +145,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
- add_executable(simulationn src/simulationn.cpp)
+ add_executable(simulation src/simulation.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -146,13 +155,15 @@ include_directories(
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
-add_dependencies(simulationn ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(simulation ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
- target_link_libraries(simulationn
+ target_link_libraries(simulation
    ${catkin_LIBRARIES}
  )
 
+
+ 
 #############
 ## Install ##
 #############
@@ -166,6 +177,10 @@ add_dependencies(simulationn ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORT
 #   scripts/my_python_script
 #   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
+catkin_install_python(PROGRAMS
+   scripts/go_to_point.py  scripts/replan.py 
+   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+ )
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
@@ -187,6 +202,7 @@ add_dependencies(simulationn ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORT
 #   FILES_MATCHING PATTERN "*.h"
 #   PATTERN ".svn" EXCLUDE
 # )
+
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 # install(FILES
