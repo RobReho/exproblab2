@@ -1,0 +1,54 @@
+ 01/03/23_23:50:10,345 -> Class OWLReferencesInterface$OWLReferencesContainer : Create a new prefix manager for References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:50:12,038 -> Class OWLReferencesInterface$OWLReferencesContainer : Ontology OWL manager created for References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:50:12,861 -> Class OWLReferencesInterface$OWLReferencesContainer : Ontology loaded from file  for References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:50:12,870 -> Class OWLReferencesInterface$OWLReferencesContainer : Create a OWL Data Factory for References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:50:13,187 -> Class OWLReferencesInterface$OWLReferencesContainer : Reasoner (com.clarkparsia.pellet.owlapi.PelletReasonerFactory) created in: 314420600 [ns] for the References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:50:13,246 -> OWLReferences OWLReferencesInterface "cluedontology" : new OWL References initialised in: 3389049500 [ns] for the Object OWLReferencesInterface "cluedontology"
+ 01/03/23_23:50:14,148 -> Class OWLReferencesInterface$OWLReferencesContainer : OWLClass given in: 101600 [ns]
+ 01/03/23_23:50:14,177 -> OWLEnquirer@148932c4 : Individual belonging to class given in: 27356200 [ns]
+ 01/03/23_23:50:14,179 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology locked on doSynchronisedWork for 3.04E-5 [sec] (top stack trace caller: run)
+ 01/03/23_23:50:14,186 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology spent 0.0302236[sec] waiting in OWLLibrary
+ 01/03/23_23:50:14,204 -> Class OWLReferencesInterface$OWLReferencesContainer : OWLClass given in: 95800 [ns]
+ 01/03/23_23:50:14,206 -> OWLEnquirer@148932c4 : Individual belonging to class given in: 1640500 [ns]
+ 01/03/23_23:50:14,207 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology locked on doSynchronisedWork for 6.5E-6 [sec] (top stack trace caller: run)
+ 01/03/23_23:50:14,210 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology spent 0.0035716[sec] waiting in OWLLibrary
+ 01/03/23_23:50:14,225 -> Class OWLReferencesInterface$OWLReferencesContainer : OWLClass given in: 76200 [ns]
+ 01/03/23_23:50:14,233 -> OWLEnquirer@148932c4 : Individual belonging to class given in: 7078300 [ns]
+ 01/03/23_23:50:14,235 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology locked on doSynchronisedWork for 6.83E-5 [sec] (top stack trace caller: run)
+ 01/03/23_23:50:14,239 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology spent 0.009366[sec] waiting in OWLLibrary
+ 01/03/23_23:51:17,467 -> Class OWLReferencesInterface$OWLReferencesContainer : Create a new prefix manager for References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:51:19,772 -> Class OWLReferencesInterface$OWLReferencesContainer : Ontology OWL manager created for References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:51:20,439 -> Class OWLReferencesInterface$OWLReferencesContainer : Ontology loaded from file  for References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:51:20,441 -> Class OWLReferencesInterface$OWLReferencesContainer : Create a OWL Data Factory for References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:51:20,652 -> Class OWLReferencesInterface$OWLReferencesContainer : Reasoner (com.clarkparsia.pellet.owlapi.PelletReasonerFactory) created in: 210502700 [ns] for the References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:51:20,692 -> OWLReferences OWLReferencesInterface "cluedontology" : new OWL References initialised in: 3840072300 [ns] for the Object OWLReferencesInterface "cluedontology"
+ 01/03/23_23:51:21,480 -> Class OWLReferencesInterface$OWLReferencesContainer : OWLClass given in: 81800 [ns]
+ 01/03/23_23:51:21,512 -> OWLEnquirer@33071bc7 : Individual belonging to class given in: 26056600 [ns]
+ 01/03/23_23:51:21,518 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology locked on doSynchronisedWork for 3.45E-5 [sec] (top stack trace caller: run)
+ 01/03/23_23:51:21,519 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology spent 0.0335538[sec] waiting in OWLLibrary
+ 01/03/23_23:51:21,529 -> Class OWLReferencesInterface$OWLReferencesContainer : OWLClass given in: 79700 [ns]
+ 01/03/23_23:51:21,530 -> OWLEnquirer@33071bc7 : Individual belonging to class given in: 1269100 [ns]
+ 01/03/23_23:51:21,537 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology locked on doSynchronisedWork for 4.9E-6 [sec] (top stack trace caller: run)
+ 01/03/23_23:51:21,538 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology spent 0.0086318[sec] waiting in OWLLibrary
+ 01/03/23_23:51:21,551 -> Class OWLReferencesInterface$OWLReferencesContainer : OWLClass given in: 64200 [ns]
+ 01/03/23_23:51:21,559 -> OWLEnquirer@33071bc7 : Individual belonging to class given in: 7672300 [ns]
+ 01/03/23_23:51:21,561 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology locked on doSynchronisedWork for 6.7E-6 [sec] (top stack trace caller: run)
+ 01/03/23_23:51:21,562 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology spent 0.009982[sec] waiting in OWLLibrary
+ 01/03/23_23:52:32,163 -> Class OWLReferencesInterface$OWLReferencesContainer : Create a new prefix manager for References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:52:34,201 -> Class OWLReferencesInterface$OWLReferencesContainer : Ontology OWL manager created for References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:52:34,905 -> Class OWLReferencesInterface$OWLReferencesContainer : Ontology loaded from file  for References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:52:34,909 -> Class OWLReferencesInterface$OWLReferencesContainer : Create a OWL Data Factory for References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:52:35,123 -> Class OWLReferencesInterface$OWLReferencesContainer : Reasoner (com.clarkparsia.pellet.owlapi.PelletReasonerFactory) created in: 209355400 [ns] for the References: OWLReferencesInterface "cluedontology"
+ 01/03/23_23:52:35,164 -> OWLReferences OWLReferencesInterface "cluedontology" : new OWL References initialised in: 3923208800 [ns] for the Object OWLReferencesInterface "cluedontology"
+ 01/03/23_23:52:35,944 -> Class OWLReferencesInterface$OWLReferencesContainer : OWLClass given in: 89500 [ns]
+ 01/03/23_23:52:35,968 -> OWLEnquirer@5113a3c0 : Individual belonging to class given in: 22789400 [ns]
+ 01/03/23_23:52:35,974 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology locked on doSynchronisedWork for 3.01E-5 [sec] (top stack trace caller: run)
+ 01/03/23_23:52:35,975 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology spent 0.0296683[sec] waiting in OWLLibrary
+ 01/03/23_23:52:35,993 -> Class OWLReferencesInterface$OWLReferencesContainer : OWLClass given in: 88200 [ns]
+ 01/03/23_23:52:35,995 -> OWLEnquirer@5113a3c0 : Individual belonging to class given in: 1470200 [ns]
+ 01/03/23_23:52:35,996 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology locked on doSynchronisedWork for 5.8E-6 [sec] (top stack trace caller: run)
+ 01/03/23_23:52:35,996 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology spent 0.002941[sec] waiting in OWLLibrary
+ 01/03/23_23:52:36,006 -> Class OWLReferencesInterface$OWLReferencesContainer : OWLClass given in: 48500 [ns]
+ 01/03/23_23:52:36,008 -> OWLEnquirer@5113a3c0 : Individual belonging to class given in: 1381900 [ns]
+ 01/03/23_23:52:36,008 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology locked on doSynchronisedWork for 4.4E-6 [sec] (top stack trace caller: run)
+ 01/03/23_23:52:36,009 -> OWLReferences OWLReferencesInterface "cluedontology" : cluedontology spent 0.0025597[sec] waiting in OWLLibrary
