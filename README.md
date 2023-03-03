@@ -13,32 +13,34 @@ It has a moveit configuration so that the arm can be controlled
 The nodes in this package are:
 - "cluedo_state_machine": handles the communication with the ARMOR server.
 - "oracle": controls the hints generation and holds the solution of the game.
-- "user_interface": subscribes to the other node's messages and prints the on the terminal. The node is not represented in the following diagrams for sake of semplicity.
+
 
 ### ROS services
 The nodes communicate with some customized services:
-- "/verify_solution" of type Compare
-- '/generate_murder' of type Hypothesis
-- '/get_hint' of type Hints
+- "/ask_solution" of type Consistent
+- "/checkconsistency" of type Consistent
+- "/good_hint" of type Bool
+- "/oracle_solution" of type Oracle
+- "/oracle_hint" of type ErlOracle
 
-### Temporal Diagram
+### Compontents Diagram
 In the following temporal diagram is showed he communication between the nodes.
-![Alt Text](https://github.com/RobReho/exproblab/blob/main/media/erl1_temp.PNG)  
+![Alt Text](https://github.com/RobReho/exproblab/blob/main/media/erl2_comp.PNG)  
 The initialization is handeled by the "cluedo_state_machine" node, that calls the appropriate services of the ARMOR server to make the ontology ready for the game,  
 and calls the service server /generate_murder to generate a winning hypothesis and store it for the following comparisons.  
 During the game, the "cluedo_state_machine" node asks for hints to the oracle calling the service /get_hint and it get an hypothesis. Such hypothesis will be uploaded on the ontology and the ARMOR sever will be asked to reason with the new information and retireve the classes "COMPLETE" and "INCONISTENT". If the hypothesis just uploaded is part of the class "COMPLETE" but not of the class "INCONISTENT", that means that it is a consistent hypothesis and can be queried to the Oracle. The "cluedo_state_machine" node does so by calling the service /verify_solution that will return 3 booleans for each element oof the hypothesis (person, weapone, place).
 If all the booleans are true the hypothesys is correc and the game ends.
 
 ### State Machine
-The different states implement with the Smach package are showed below.
-![Alt Text](https://github.com/RobReho/exproblab/blob/main/media/sm1.PNG)
-The states are implemented in the "cluedo_state_machine" node.
-- The INIT state Establish the communication with Armor server, loads OWL file, calls "generate murder" service to start the game, retrieves people, weapons and places list from the OWL 
-- The EXPLORE state retrieves the list of available places, randomly choose one and simulates reaching the place by sleeping 1 second.
-- THe MAKE HYPOTHESIS state asks the server to get a new hint, it loads it on the ontology and retrieves the classes "COMPLETE" and "INCONISTENT" to check for consistency. If the hypothesis is consistent the executed state is REACH ORACLE, otherwise it will go back to the state EXPLORE.
-- The state REACH ORACLE just simulates reaching the oracle posistion by sleeping 1 second. The possibility that this state fails is implemented in the state machine, but never executed. The possibility is left for future implementations where an actual sction will be implemented. Onche the oracle is reached, the next executed state is DELIVER HYPOTHESIS.
-- The DELIVER HYPOTHESIS state gets the person, weapon and place of the hypothesis and express it in natural language. The next state is HYPOTHESIS CHECK
-- The state HYPOTHESIS CHECK calls the server "verify solution" to compare the hypothesis with the right one. If all the booleans returned are true the game ends, otherwise the hypothesis is wrong and the program executes the state EXPLORE.
+In this iteration the flow of the game is planned by ROSplan services. ROSplan uses a PDDL file that defines a planning domain where the robot must move between waypoints and an oracle to solve the mystery. The robot can collect hints at waypoints, verify that the collected hypothesis is consistent, and eventually visit an oracle to check if its hypothesis is correct. 
+![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/erl2_sm.PNG)
+Every state is defines by a durative action in the PDDL domain. They are "leave_oracle", "collect_hint", "go_to_next_point", "complete_query", and "solution_query". 
+- "leave_oracle" represents the robot leaving an oracle and moving to a waypoint.
+- "collect_hint" represents the robot collecting a hint at a waypoint.
+- "go_to_next_point" represents the robot moving from one waypoint to another.
+- "complete_query" represents the robot quering the ontology for consistency after hints have been taken from all waypoints.
+- "solution_query" represents the robot checking whether its hypothesis is correct by visiting the oracle and receiving the solution.
+
 
 ## Installation and Running
 This project needs some external packages. You can install them in your ROS workspace:  
@@ -51,8 +53,11 @@ SMASH (for assignment 1 package)
   git clone https://github.com/ros/executive_smach.git
   git clone https://github.com/ros-visualization/executive_smach_visualization.git
 ```
-MOVEIT
+MOVEIT (Warning! this package works for MoveIt 1.1.5)
 ```
+sudo apt-get update
+sudo apt-get install ros-$ROS_DISTRO-moveit
+sudo apt-get install ros-$ROS_DISTRO-moveit-ros-visualization
 ```
 It is also dependent on the package of the previous iteration of the assignment and can be found here:
 ```
