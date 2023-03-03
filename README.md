@@ -9,11 +9,7 @@ At this stage of the project the robot has implemented as a 2 wheeled mobile rob
 ### Robot architecture
 The robot has this structure...
 It has a moveit configuration so that the arm can be controlled
-### ROS nodes
-The nodes in this package are:
-- "cluedo_state_machine": handles the communication with the ARMOR server.
-- "oracle": controls the hints generation and holds the solution of the game.
-
+.................................................................................
 
 ### ROS services
 The nodes communicate with some customized services:
