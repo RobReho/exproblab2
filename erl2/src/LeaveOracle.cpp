@@ -63,15 +63,7 @@ namespace KCL_rosplan {
 	}
 }
 
-/**
- * \brief: main function
- * \param : None
- * 
- * \return 0
- * 
- * This is the main function, it initializes the node and the interface to 
- * associate the action of the ros plan to the actual implementation.
- */
+
 int main(int argc, char **argv) 
 {
 	ros::init(argc, argv, "leave_oracle", ros::init_options::AnonymousName);

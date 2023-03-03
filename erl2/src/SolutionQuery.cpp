@@ -7,22 +7,24 @@
 *  \version 1.0
 *  \date 22/02/2023
 *  \details
-
+*
 *   Client Services: <BR>
-*   /correcthypothesis
+*   /ask_solution
 *    
-
 *  Description: <BR>
 *  Rosplan action called when the planner dispatches the action (solution_query). 
 *
 */
 
 #include "erl2/InterfaceAction.h"
+#include "ros/ros.h"
+#include <cstdlib>
 #include <unistd.h>
 #include <actionlib/client/simple_action_client.h>
 #include <actionlib/client/terminal_state.h>
 #include <erl2/PlanningAction.h>
 #include <erl2/Consistent.h>
+#include <string> 
 
 ros::ServiceClient sol_client;
 
@@ -52,7 +54,7 @@ namespace KCL_rosplan
 		sol_client.call(data);
 		// read the response to the server
 		// if the response is true
-		std::cout<<"Solution service: "<<data.response.res<<std::endl;
+		std::cout<<"Solution service: "<<std::to_string(data.response.res)<<std::endl;
 		// if the response is true
 		if (data.response.res==true)
 			{
@@ -75,9 +77,10 @@ int main(int argc, char **argv)
 {
 	ros::init(argc, argv, "solution_query", ros::init_options::AnonymousName);
 	ros::NodeHandle nh("~");
-	KCL_rosplan::SolutionQueryInterface my_aci(nh);
-	my_aci.runActionInterface();
 	// service client to ask for the solution ID
 	sol_client = nh.serviceClient<erl2::Consistent>("/ask_solution");
+	KCL_rosplan::SolutionQueryInterface my_aci(nh);
+	my_aci.runActionInterface();
+	
 	return 0;
 }

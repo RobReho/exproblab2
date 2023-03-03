@@ -1,5 +1,22 @@
 /** @ package erl2
 * 
+*  \file CollectHint.cpp
+*  \brief implements the (collect_hint) action
+*
+*  \author Roberta Reho
+*  \version 1.0
+*  \date 22/02/2023
+*  \details
+*   
+*  Subscribes to: <BR>
+*	/good_hiint
+**    
+*  Action Services: <BR>
+*    go_to_point
+*
+*  Description: <BR>
+*  Rosplan action called when the planner dispatches the action (collect_hint). 
+*  
 */
 
 #include "erl2/InterfaceAction.h"
@@ -42,7 +59,7 @@ namespace KCL_rosplan
  * \return true
  * 
  * This function implements the behaviour for the robot when the planner dispatches
- * the action take_hint. It moves the arm to retrieve the hints.
+ * the action Collect_hint. It moves the arm to catch the hints.
  */	
     bool CollectHintInterface::concreteCallback(const rosplan_dispatch_msgs::ActionDispatch::ConstPtr& msg) 
 	{
@@ -56,11 +73,11 @@ namespace KCL_rosplan
             moveArm("low_reach"); 
             count++;
             if(count>=2){
-                count =0;
                 break;
             }
         }
         // hint received
+        count = 0;
         received = 0;
         return true;
 
@@ -75,7 +92,6 @@ int main(int argc, char **argv)
 	// initialization of the node handle for the subscriber on the topic /oracle_hint
 	ros::NodeHandle n;
 	ros:: Subscriber hint = n.subscribe("/good_hint", 1000, hintCallback);
-	ui = nh.advertise<std_msgs::String>( "/ui_output", 30 );
 	KCL_rosplan::CollectHintInterface my_aci(nh);
 	my_aci.runActionInterface();
 	ros::AsyncSpinner spinner(1);
@@ -112,7 +128,7 @@ void hintCallback( const std_msgs::Bool::ConstPtr& Hint){
  * 
  * \return 0
  * 
- * This function gets in inputthe desired position of the robot arm
+ * This function gets in input the desired position of the robot arm
  * and sets all the features needed for the planning and execution of the movement.
  */
 int moveArm(std::string targetPosition)

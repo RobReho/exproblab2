@@ -1,8 +1,8 @@
 /** @ package erl2
 * 
 *  \file simulation.cpp
-*  \brief implements the simulation for the assignment
-*
+*  \brief This file is the implementation of the oracle node which generates hints about the Cluedo game.
+
 *  \author Roberta Reho
 *  \version 1.0
 *  \date 22/02/2023
@@ -16,20 +16,18 @@
 *	/oracle_hint
 *
 *  Services: <BR>
-*    /oracle_solution
+*   /oracle_solution
 * 
 *   Client Services: <BR>
 *   None
 *    
-*
 *  Action Services: <BR>
 *    None
 *
 *  Description: <BR>
-*  This file implements the simulation for the second assignment of the
-*  Experimental Robotics Laboratory course for the Robotics Engineering Master Degree.
-*  It implements the generation of the hints and the server to check the correct
-*  hypothesis.  
+*  It subscribes to the /gazebo/link_states topic to detect when the end effector is close to a hint source.
+*  When the end effector is detected near one source, it generates a hint and publishes it to the /oracle_hint topic.
+*  It also provides a service to reveal the winning hint ID.
 */
 #include <ros/ros.h>
 #include <gazebo_msgs/LinkStates.h>
@@ -42,7 +40,7 @@
 #include <time.h>
 #include <vector>
 
-ros::Publisher oracle_pub;
+ros::Publisher oracle_pub; /**< Publisher object for the /oracle_hint topic. */
 
 double markx[4];
 double marky[4];
@@ -59,20 +57,44 @@ const std::string place[9] = {"conservatory", "lounge", "kitchen", "library", "h
 int uIDs[3]={-1,-1,-1};
 int winID = -1;
  
-std::vector<erl2::ErlOracle> oracle_msgs;
+std::vector<erl2::ErlOracle> oracle_msgs; 
 
+/**
+
+@brief Computes the Euclidean distance between two points in 3D space.
+@param[in] x - x-coordinate of the first point.
+@param[in] y - y-coordinate of the first point.
+@param[in] z - z-coordinate of the first point.
+@param[in] x1 - x-coordinate of the second point.
+@param[in] y1 - y-coordinate of the second point.
+@param[in] z1 - z-coordinate of the second point.
+@return Euclidean distance between the two points.
+*/
 double distfromtarget (double x, double y, double z, double x1, double y1, double z1){
 	double dist = sqrt((x-x1)*(x-x1)+(y-y1)*(y-y1)+(z-z1)*(z-z1));
 	return dist;
 	
 }
 
+
+/**
+
+@brief Service callback to get the solution from the oracle
+@param req Request object
+@param res Response object
+@return true on successful response generation
+*/
 bool oracleService(erl2::Oracle::Request &req, erl2::Oracle::Response &res)
 	{
 		res.ID = winID;
 		return true;
 	}
 
+/**
+
+@brief Callback function to generate a new hint
+@param msg Pointer to the received message
+*/
 void oracleCallback(const gazebo_msgs::LinkStates::ConstPtr& msg)
 {
    for(int i=0; i< msg->name.size(); i++){

@@ -148,6 +148,8 @@ add_executable(leave_oracle src/LeaveOracle.cpp)
 add_executable(collect_hint src/CollectHint.cpp)
 add_executable(complete_query src/CompleteQuery.cpp)
 add_executable(solution_query src/SolutionQuery.cpp)
+add_executable(debug src/debug.cpp)
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -163,6 +165,8 @@ add_dependencies(leave_oracle ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPOR
 add_dependencies(collect_hint ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(complete_query ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(solution_query ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(debug ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+
 ## Specify libraries to link a library or executable target against
  target_link_libraries(simulation
    ${catkin_LIBRARIES}
@@ -183,6 +187,9 @@ add_dependencies(solution_query ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXP
    ${catkin_LIBRARIES}
 )
  target_link_libraries(solution_query
+   ${catkin_LIBRARIES}
+)
+ target_link_libraries(debug
    ${catkin_LIBRARIES}
 )
 #############

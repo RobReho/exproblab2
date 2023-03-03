@@ -1,15 +1,37 @@
 #! usr/bin/env python2
 
 ## @package erl2
+#  
+#  \file myhint.py
+#  \brief This file implements the behaviour that allows the robot to reach a goal position.
 #
+#  \author Roberta Reho
+#  \version 1.0
+#  \date 03/03/2023
+#  \details
+#  
+#  Subscribes to: <BR>
+#	/oracle_hint
+#
+#  Publishes to: <BR>
+#	/good_hint
+#
+#  Services: <BR>
+#   /oracle_solution
+#   /checkconsistency
+#   /ask_solution
+
+#  Action Services: <BR>
+#    /go_to_point
 #   The node handles the hint detection and the ARMOR requests.
 #   It subscribes to the topic /oracle_hint, and receives all the hints detected by the robot
 #   The hint is examined and only the well formed hints are advertised to the topic /good_hint.
 #   The node is also the client for the sevice /oracle_solution as it asks for the winning ID and compares
 #   it with the consistent ID from the ontology.
-#   It also conscronizes the communication with the rosplane interfaces, returning booleans as result for the
+#   It also sincronizes the communication with the rosplane interfaces, returning booleans as result for the
 #   rosplan actions.
-
+    
+    
 import numpy as np
 import rospy
 from os.path import dirname, realpath
@@ -22,7 +44,7 @@ from erl2.msg import ErlOracle
 people = ["missScarlett", "colonelMustard", "mrsWhite", "mrGreen", "mrsPeacock", "profPlum"]
 weapons = ["candlestick", "dagger", "leadPipe", "revolver", "rope", "spanner"]
 places = ["conservatory", "lounge", "kitchen", "library", "hall", "study", "bathroom", "diningRoom", "billiardRoom"]
-cIDs = []   # store consistent IDs
+cIDs = []   # stores consistent IDs
 
 # servers, clients, subsctibers, publishers init
 armor_service = None
@@ -267,11 +289,12 @@ class Armor_communication():
 armor = Armor_communication()
 
 ## hintCallback
+# \brief Callback of the /oracle hint service
+# \param hint: hint message of type ErlOracle
+# \return : None
 #   
-#  Callback of the /oracle hint service
-#  Checks if the tìhint received is well formed.
-#  If so, it publish a true boolean to the topic
-#  /good_hint
+#  Checks if the the hint received is well formed.
+#  If so, it publish a true boolean to the topic /good_hint
 def hintCallback(hint):
     global ID0,ID1,ID2,ID3,ID4,ID5, hint_pub
     IDs = [ID0,ID1,ID2,ID3,ID4,ID5]
@@ -289,8 +312,8 @@ def hintCallback(hint):
         hint_pub.publish(False)
         return 
 	
-    # check if the value is correct: not empty, 0, -1 
-    if hint.value == "" or hint.value == -1:
+    # check if the value is correct: 
+    if hint.value not in people and hint.value not in weapons and hint.value not in places:
         print('value wrong')
         hint_pub.publish(False)
         return 
@@ -312,18 +335,19 @@ def hintCallback(hint):
     hint_pub.publish(True)
     return
 
-
 ## Check_consistency
+# \brief Callback for the service server /checkconsistency.
+# \param req: boolean
+# \return True: if any hypothesis is consistent, False otherwise
 #
-#   Callback for the service server /checkconsistency.
 #   If any id has 3 or more hints, those are uploaded to the ontology and 
 #   checked for completeness and incosistency. The ID of consitent hypotesis is 
 #   returned. If at least one ID has returned a consistent hypothesis the 
 #   response is "true"
-def check_consistency():
+def check_consistency(req):
     global ID0, ID1, ID2, ID3, ID4, ID5, cIDs
     IDs = [ID0,ID1,ID2,ID3,ID4,ID5]
-    
+    print(req)
     consistent = False
     print('Are any ID source consistent?')
     print("ID0 ",ID0)
@@ -345,7 +369,8 @@ def check_consistency():
             # Check consistency
             compl = armor.retrieve_class('COMPLETED')
             incons = armor.retrieve_class('INCONSISTENT') 
-            
+            print(compl)
+            print(incons)
             rospy.sleep(1)
             if hypothesis_code in compl and hypothesis_code not in incons: 
                 print('The hypothesis is consistent')
@@ -360,8 +385,11 @@ def check_consistency():
         return False
 
 
-
 ## id_to_natural_language
+# \brief Formulate hypothesis
+# \param id: id of the hypothesis to express
+# \return msg: string with the hypothesi
+#
 #  Given the ID it returns the hints in type string
 #  in natural language
 def id_to_natural_language(id):
@@ -381,17 +409,23 @@ def id_to_natural_language(id):
     msg = per+" with the "+wea+" in the "+pla
     return msg
 
+
 ## Check_consistency
+# \brief Callback for the service server /ask_solution.
+# \param req: boolean
+# \return True: if any id is the right one, False otherwise
 #
-#   Callback for the service server /ask_solution.
 #   Gets the IDs relative to consistent hypothesis and calls for the /oracle_solution 
 #   server to compare them with the winning ID. If one of the ID is the same as the 
 #   winning ID it returns a "true" response
-def check_result():
+def check_result(req):
     global oracle_client, cIDs
     
     # call /oracle_solution server
     res = oracle_client()
+    if not cIDs:
+        print("No hypothesis to compare")
+        return False
     
     for i in range(0,len(cIDs)):
         # Print query in natural language
@@ -419,7 +453,9 @@ def main():
     
 
     rospy.init_node('myhint')
- 
+    print("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_")
+    print("_-_-_-_-_-_-_-_-_-_-C_L_U_E_D_O-_-_-_-_-_-_-_-_-_")
+    print("_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_")
     
     # Init OWL file from Armor server
     armor.__init__()

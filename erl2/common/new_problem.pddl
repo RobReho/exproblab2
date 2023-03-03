@@ -5,11 +5,10 @@
     oracle - oracle
 )
 (:init
-    (robot_at wp1)
 
 
-    (not (hypothesis_complete))
 
+    (robot_at_oracle oracle)
 
 
 )
