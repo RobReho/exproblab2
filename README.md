@@ -55,17 +55,6 @@ ROSplan action interfaces:
 -  SolutionQuery.cpp: Rosplan action called when the planner dispatches the action (solution_query). It calls the service /ask_solution asking the node "myhint" to retrieve the winning ID from the node "simulation" and compare it to the consistent hypothesis saved in the array "cIDs". The action is succesful if the IDs are the same, it fails otherwise.
 
 
-### State Machine
-In this iteration the flow of the game is planned by ROSplan services. ROSplan uses a PDDL file that defines a planning domain where the robot must move between waypoints and an oracle to solve the mystery. The robot can collect hints at waypoints, verify that the collected hypothesis is consistent, and eventually visit an oracle to check if its hypothesis is correct. 
-![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/erl2_sm.PNG)
-Every state is defines by a durative action in the PDDL domain. They are "leave_oracle", "collect_hint", "go_to_next_point", "complete_query", and "solution_query". 
-- "leave_oracle" represents the robot leaving an oracle and moving to a waypoint.
-- "collect_hint" represents the robot collecting a hint at a waypoint.
-- "go_to_next_point" represents the robot moving from one waypoint to another.
-- "complete_query" represents the robot quering the ontology for consistency after hints have been taken from all waypoints.
-- "solution_query" represents the robot checking whether its hypothesis is correct by visiting the oracle and receiving the solution.
-
-
 ## Installation and Running
 This project needs some external packages. You can install them in your ROS workspace:  
 ARMOR
