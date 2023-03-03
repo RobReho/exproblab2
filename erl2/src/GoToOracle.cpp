@@ -1,32 +1,6 @@
 /** @ package erl2
 * 
-*  \file GoToOracle.cpp
-*  \brief implements the ( go_to_oracle) action
-*
-*  \author Roberta Reho
-*  \version 1.0
-*  \date 22/02/2023
-*  \details
-*   
-*  Subscribes to: <BR>
-*	None 
-*
-*  Publishes to: <BR>
-*	 None
-*
-*  Services: <BR>
-*    None
-* 
-*   Client Services: <BR>
-*   None
-*    
-*
-*  Action Services: <BR>
-*    go_to_point
-*
-*  Description: <BR>
-*  Rosplan action called when the planner dispatches the action (go_to_oracle). 
-*  It moves the robot to the Oracle position 0.0.
+*  
 */
 #include "erl2/InterfaceAction.h"
 #include <unistd.h>
