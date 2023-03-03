@@ -1,22 +1,6 @@
 /** @ package erl2
 * 
-*  \file CompleteQuery.cpp
-*  \brief implements the (complete_query) action
 *
-*  \author Roberta Reho
-*  \version 1.0
-*  \date 22/02/2023
-*  \details
-*   
-* 
-*   Client Services: <BR>
-*   /checkcomplete
-*    
-*
-*  Description: <BR>
-*  Rosplan action called when the planner dispatches the action (complete_query). 
-*  The callback calls the server of /checkcomplete 
-*  service
 */
 
 #include "erl2/InterfaceAction.h"
