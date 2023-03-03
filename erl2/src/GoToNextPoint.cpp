@@ -1,19 +1,6 @@
 /** @ package erl2
 * 
-*  \file GoToNextPoint.cpp
-*  \brief implements the (go_to_next_point) action
-*
-*  \author Roberta Reho
-*  \version 1.0
-*  \date 22/02/2023
-*  \details
-*   
-*  Action Services: <BR>
-*    go_to_point
-*
-*  Description: <BR>
-*  Rosplan action called when the planner dispatches the action (go_to_next_point). 
-*  It moves the robot to the desired waypoint.
+*  
 */
 #include "erl2/InterfaceAction.h"
 #include <unistd.h>
