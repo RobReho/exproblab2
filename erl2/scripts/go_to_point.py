@@ -2,36 +2,7 @@
 
 ## @package erl2
 #
-#  \file go_to_point.py
-#  \brief This file implements the behaviour that allows the robot to reach a goal position.
-#
-#  \author Zoe Betta
-#  \version 1.0
-#  \date 16/03/2022
-#  \details
 #  
-#  Subscribes to: <BR>
-#	 /odom
-#
-#  Publishes to: <BR>
-#	 /cmd_vel 
-#
-#  Services: <BR>
-#    None
-#
-#  Action Services: <BR>
-#    /go_to_point
-#
-#  Description: <BR>
-#    This node allows the robot to reach a position with a given orientation.
-#	 Firstly it orients the robot in the direction of the goal and moves towards it.
-#	 Once the robot has reached the correct x and y coordinates it rotates to reach
-#	 the correct orientation. The velocities, both angular and linear are set by
-#	 the node user_interface and are received on the topic /vel. If the goal
-# 	 is set cancelled by the client of the action server then the velocities are
-#	 all set to zero and the action server is set preempted.  
-
-
 import rospy
 from geometry_msgs.msg import Twist, Point, Pose
 from nav_msgs.msg import Odometry
