@@ -1,25 +1,5 @@
 /** @ package erl2
 * 
-*  \file CollectHint.cpp
-*  \brief implements the (collect_hint) action
-*
-*  \author Roberta Reho
-*  \version 1.0
-*  \date 22/02/2023
-*  \details
-*   
-*  Subscribes to: <BR>
-*	/oracle_hint
-*
-*   Client Services: <BR>
-*   /hint
-*    
-*  Action Services: <BR>
-*    go_to_point
-*
-*  Description: <BR>
-*  Rosplan action called when the planner dispatches the action (collect_hint). 
-*  
 */
 
 #include "erl2/InterfaceAction.h"
