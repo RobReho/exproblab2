@@ -2,40 +2,7 @@
 
 ## @package erl2
 #
-#  \file planproblem.py
-#  \brief this file implements the calls to the planning server
-#
-#  \author Zoe Betta
-#  \version 1.0
-#  \date 21/02/2022
-#  \details
 #  
-#  Subscribes to: <BR>
-#	 
-#
-#  Publishes to: <BR>
-#	 
-#
-#  Services: <BR>
-#    
-#  Action Services: <BR>
-#
-#  Client Services: <BR>
-#  /rosplan_problem_interface/problem_generation_server
-#  /rosplan_planner_interface/planning_server
-#  /rosplan_parsing_interface/parse_plan
-#  /rosplan_plan_dispatcher/dispatch_plan
-#  /rosplan_knowledge_base/update
-#    
-#
-#  Description: <BR>
-#  This file implements the logic to generate the plan to control the robot.
-#  It reads the feedback from the plan before and keeps generating new plans until
-#  all the action of one are  successful. It also updates the knowedge base 
-#  depending on a ros parameter to customize the behaviour of the robot.
-
-
-
 import rospy
 from rosplan_knowledge_msgs.srv import *
 from std_srvs.srv import Empty, EmptyResponse
