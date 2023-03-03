@@ -1,0 +1,43 @@
+Do the following steps to install the correct version of MoveIt (the one used during classes).
+
+In the src folder of your workspace:
+
+-- Install moveit 1.1.5
+git clone https://github.com/ros-planning/moveit.git
+cd moveit
+git checkout 2b881e5e3c4fd900d4d4310f4b12f9c4a63eb5dd
+cd ..
+
+-- Install moveit_msgs 0.11.2
+
+git clone git clone https://github.com/ros-planning/moveit_msgs.git
+cd moveit_msgs
+git checkout 612d7d5bb1047f65acd495a7e632da78a621545d
+cd ..
+
+-- Install moveit_resources 0.8.0
+
+git clone https://github.com/ros-planning/moveit_resources.git
+cd moveit_resources
+git checkout f6a7d161e224b9909afaaf621822daddf61b6f52
+cd ..
+
+-- Install srdfdom (21/03/2021)
+
+git clone https://github.com/ros-planning/srdfdom.git
+cd srdfdom
+git checkout b1d67a14e45133928f9793e9ee143998219760fd
+cd ..
+
+-- Install rosparam-shortcuts (latest)
+
+apt-get install ros-noetic-rosparam-shortcuts
+
+-- Build the workspace
+cd ..
+catkin_make 
+
+... It will take a while ....
+
+Once finished, everything should work as shown in the Experimental Robotics course!
+
