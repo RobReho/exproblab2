@@ -108,7 +108,8 @@ If the hint is malformed it will be discarded by the node and not stored at all:
 If the arrays have three hints they potentially have a consistent hypothesis that can be loaded on the ontology to be assested.  
 ![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/erl2_consistency.PNG)  
 The IDs of consistent hypothesis will then be compared to the solution ID until one matches.  
-![Alt Text](https://github.com/RobReho/exproblab/blob/main/media/erl2_solution.PNG)  
+
+![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/erl2_solution.PNG)  
 
 ### System limitations and Possible technical Improvements
 This iteration of the game uses the same ARMOR library of the previous assignment. The states progression is no longer handled by SMACH, but by ROSplan. The expected behavior for the robot is to go around the four sources before quering the ontology for consistency. Howaver, the observed behaviour is different, as the robot continuously goes back to the first waypoint before proceding forward to the others. This misbihaviour might be addressed by additional conditions in the ontology, such as predicates that explicitly specify the order of the waypoints.
