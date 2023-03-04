@@ -80,7 +80,7 @@ SMASH (for assignment 1 package)
 ```
 MOVEIT (Warning! this package works for MoveIt 1.1.5)
 To install version 1.1.5 follow the tutorial:  
-![Alt Text](https://github.com/RobReho/exproblab2/blob/main/moveit1.1.5_installation_tutorial.txt) 
+[Alt Text](https://github.com/RobReho/exproblab2/blob/main/moveit1.1.5_installation_tutorial.txt) 
 
 
 To install the package clone the repository in your ROS workspace:
@@ -104,7 +104,7 @@ This last tab is also the interface where the status of the game can be followed
 
 ## Demo
 A short demo of the execution of the game is avaliable at this  
-![link](https://youtu.be/viMno0NIJpc)
+[link](https://youtu.be/viMno0NIJpc)
 
 ## Working hypothesis and environment.
 ### System features
