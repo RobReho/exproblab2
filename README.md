@@ -1,6 +1,10 @@
 # Experimental robotic lab 2
 Second assignment for the Experimental Robotic Lab course a.y.2021/2022
 
+## Package content
+- cluedo_robot_moveit: Package built with moveit_setup_assistant to configurate the robot
+- erl2: Package containing the starting elements provided by the repository [erl2](https://github.com/CarmineD8/erl2.git) plus the original nodes created for the assignment. Addition details can be found in the Doxygen documentation.
+
 ## Introduction
 At this stage of the project, the robot has been implemented as a two-wheeled mobile robot with a manipulator on top. The robot explores its environment and deduces hypotheses based on hints found at four different locations in a simulated environment. The robot has been designed to move through the environment and collect hints at the four different coordinates 3,0); (3,0); (0, 3); (0,3). If a consistent hypothesis can be deduced, the robot will go to the oracle location and express it in English. If the hypothesis is incorrect, the robot will continue exploring and finding new hints until a correct hypothesis is deduced.
 
