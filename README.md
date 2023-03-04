@@ -70,7 +70,8 @@ SMASH (for assignment 1 package)
   git clone https://github.com/ros-visualization/executive_smach_visualization.git
 ```
 MOVEIT (Warning! this package works for MoveIt 1.1.5)
-To install version 1.1.5 follow the tutorial: ![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/moveit1.1.5_installation_tutorial.txt) 
+To install version 1.1.5 follow the tutorial:  
+![Alt Text](https://github.com/RobReho/exproblab2/blob/main/moveit1.1.5_installation_tutorial.txt) 
 
 
 To install the package clone the repository in your ROS workspace:
@@ -93,7 +94,8 @@ In another tab, launch rosplan:
 This last tab is also the interface where the status of the game can be followed.
 
 ## Demo
-A short demo of the execution of the game is avaliable at this ![link](https://youtu.be/viMno0NIJpc)
+A short demo of the execution of the game is avaliable at this  
+![link](https://youtu.be/viMno0NIJpc)
 
 ## Working hypothesis and environment.
 ### System features
@@ -101,12 +103,12 @@ The game is a revisited simulated Cluedo game, where the player is the robot imp
 If the hints generated are well formed, they will be stored in arrays, one for every ID, by the "myhints" node:  
 ![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/erl2_goodhint.PNG)  
 ![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/erl2_hints.PNG)  
-If the hint is malformed it will be discarded by the node and not stored at all:
+If the hint is malformed it will be discarded by the node and not stored at all:  
 ![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/erl2_badhint.PNG)  
-If the arrays have three hints they potentially have a consistent hypothesis that can be loaded on the ontology to be assested.
+If the arrays have three hints they potentially have a consistent hypothesis that can be loaded on the ontology to be assested.  
 ![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/erl2_consistency.PNG)  
-The IDs of consistent hypothesis will then be compared to the solution ID until one matches. 
-![Alt Text](https://github.com/RobReho/exproblab/blob/main/media/erl1_solution.PNG)
+The IDs of consistent hypothesis will then be compared to the solution ID until one matches.  
+![Alt Text](https://github.com/RobReho/exproblab/blob/main/media/erl2_solution.PNG)  
 
 ### System limitations and Possible technical Improvements
 This iteration of the game uses the same ARMOR library of the previous assignment. The states progression is no longer handled by SMACH, but by ROSplan. The expected behavior for the robot is to go around the four sources before quering the ontology for consistency. Howaver, the observed behaviour is different, as the robot continuously goes back to the first waypoint before proceding forward to the others. This misbihaviour might be addressed by additional conditions in the ontology, such as predicates that explicitly specify the order of the waypoints.
