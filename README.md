@@ -7,9 +7,16 @@ At this stage of the project the robot has implemented as a 2 wheeled mobile rob
 ## Software architecture
 
 ### Robot architecture
-The robot has this structure...
-It has a moveit configuration so that the arm can be controlled
-.................................................................................
+The robot is composed by a two wheels mobile robot embedded with a laser sensor. The manipulator on top is composed by four joints and an end effector with a gripper. The full hierarchy can be visualized here: [Robot hierarchy](https://github.com/RobReho/exproblab2/blob/main/erl2/urdf/m2wr.pdf)  
+
+The Xacro file has been configured with MoveIt, a motion planning framework for robotic arms. The robotic arm is now able to assume three different poses, "default", "high_reach" and "low_reach" showed below, which have been pre-defined and stored in the Xacro file. These poses can be used achieve different hights and be able to collect hints at both 0.75 and 1.25 z coordinate.  
+Default pose:  
+![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/default.PNG)  
+High reach pose:  
+![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/high.PNG)  
+Low reach pose:  
+![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/low.PNG)  
+
 
 ### ROS services
 The nodes communicate with some customized services:
@@ -86,19 +93,23 @@ In another tab, launch rosplan:
 This last tab is also the interface where the status of the game can be followed.
 
 ## Demo
-
-![Alt Text](https://github.com/RobReho/exproblab/blob/main/media/State_machine.gif)
+A short demo of the execution of the game is avaliable at this ![link](https://youtu.be/viMno0NIJpc)
 
 ## Working hypothesis and environment.
 ### System features
-The game is a revisited simulated Cluedo game, where the player is the robot implemented by the state machine, and the game is controlled by the Oracle. The oracle gnerates the hypothesis by choosing random elements in the people, weapons and places arrays. Randomly, it might generate and inconsistent hypothesis, meaning that it will be composed by 4 elements instead of 3.
-The robot will get both consistent and inconsistent hipothesis and send bach only the consistent hypothesis to be compared with the solution. When an hypothesis is compared to the solution the hints that don't match are deiscarded from the hints arrays stored in the oracle node. As more hypothesis are compared it is more and more likely that the hypothesis proposed matches the solution.
-![Alt Text](https://github.com/RobReho/exproblab/blob/main/media/erl1_end.PNG)
+The game is a revisited simulated Cluedo game, where the player is the robot implemented by the state machine, and the game is controlled by the Oracle. The oracle gnerates the hints to be released every time the end effector is close enough to one of the 4 sources. Every hint is associated with an ID and only one ID delivers hints belonging to the right hyopthesis. The oracle also might generate malformed hints.  
+If the hints generated are well formed, they will be stored in arrays, one for every ID, by the "myhints" node:  
+![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/erl2_goodhint.PNG)  
+![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/erl2_hints.PNG)  
+If the hint is malformed it will be discarded by the node and not stored at all:
+![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/erl2_badhint.PNG)  
+If the arrays have three hints they potentially have a consistent hypothesis that can be loaded on the ontology to be assested.
+![Alt Text](https://github.com/RobReho/exproblab2/blob/main/media/erl2_consistency.PNG)  
+The IDs of consistent hypothesis will then be compared to the solution ID until one matches. 
+![Alt Text](https://github.com/RobReho/exproblab/blob/main/media/erl1_solution.PNG)
 
-### System limitations 
-The game implemented has a very simple structure and does not use the any IDs associated with the hypothesis. The architecture of the game has a very different way to generate and handle hypothesis with respect to the following iterations. Nevertheless, the semplicity of the architecture makes it easy to adapt to futures implementations.
-### Possible technical Improvements
-Possible improvement are a system that generates hints in a similar way to what happens in the following iterations.
+### System limitations and Possible technical Improvements
+This iteration of the game uses the same ARMOR library of the previous assignment. The states progression is no longer handled by SMACH, but by ROSplan. The expected behavior for the robot is to go around the four sources before quering the ontology for consistency. Howaver, the observed behaviour is different, as the robot continuously goes back to the first waypoint before proceding forward to the others. This misbihaviour might be addressed by additional conditions in the ontology, such as predicates that explicitly specify the order of the waypoints.
 
 ## Contacts
 Roberta Reho: s5075214@studenti.unige.it
