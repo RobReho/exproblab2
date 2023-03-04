@@ -1,0 +1,77 @@
+\hypertarget{_solution_query_8cpp}{}\doxysection{src/\+Solution\+Query.cpp File Reference}
+\label{_solution_query_8cpp}\index{src/SolutionQuery.cpp@{src/SolutionQuery.cpp}}
+
+
+implements the (solution\+\_\+query) action  
+
+
+{\ttfamily \#include \char`\"{}erl2/\+Interface\+Action.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ros/ros.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$actionlib/client/simple\+\_\+action\+\_\+client.\+h$>$}\newline
+{\ttfamily \#include $<$actionlib/client/terminal\+\_\+state.\+h$>$}\newline
+{\ttfamily \#include $<$erl2/\+Planning\+Action.\+h$>$}\newline
+{\ttfamily \#include $<$erl2/\+Consistent.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for Solution\+Query.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_solution_query_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespace_k_c_l__rosplan}{K\+C\+L\+\_\+rosplan}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_solution_query_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+ros\+::\+Service\+Client \mbox{\hyperlink{_solution_query_8cpp_acff17d0ae58daa1b898d576831604dcf}{sol\+\_\+client}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+implements the (solution\+\_\+query) action 
+
+@ package \mbox{\hyperlink{namespaceerl2}{erl2}}
+
+\begin{DoxyAuthor}{Author}
+Roberta Reho 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+22/02/2023
+\end{DoxyDate}
+Client Services\+: ~\newline
+ /ask\+\_\+solution
+
+Description\+: ~\newline
+ Rosplan action called when the planner dispatches the action (solution\+\_\+query). 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_solution_query_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{_solution_query_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{SolutionQuery.cpp@{SolutionQuery.cpp}!main@{main}}
+\index{main@{main}!SolutionQuery.cpp@{SolutionQuery.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_solution_query_8cpp_acff17d0ae58daa1b898d576831604dcf}\label{_solution_query_8cpp_acff17d0ae58daa1b898d576831604dcf}} 
+\index{SolutionQuery.cpp@{SolutionQuery.cpp}!sol\_client@{sol\_client}}
+\index{sol\_client@{sol\_client}!SolutionQuery.cpp@{SolutionQuery.cpp}}
+\doxysubsubsection{\texorpdfstring{sol\_client}{sol\_client}}
+{\footnotesize\ttfamily ros\+::\+Service\+Client sol\+\_\+client}
+
