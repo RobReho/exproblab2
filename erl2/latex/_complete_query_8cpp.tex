@@ -1,0 +1,77 @@
+\hypertarget{_complete_query_8cpp}{}\doxysection{src/\+Complete\+Query.cpp File Reference}
+\label{_complete_query_8cpp}\index{src/CompleteQuery.cpp@{src/CompleteQuery.cpp}}
+
+
+implements the (complete\+\_\+query) action  
+
+
+{\ttfamily \#include \char`\"{}erl2/\+Interface\+Action.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}ros/ros.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$cstdlib$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$actionlib/client/simple\+\_\+action\+\_\+client.\+h$>$}\newline
+{\ttfamily \#include $<$actionlib/client/terminal\+\_\+state.\+h$>$}\newline
+{\ttfamily \#include $<$erl2/\+Planning\+Action.\+h$>$}\newline
+{\ttfamily \#include $<$erl2/\+Consistent.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for Complete\+Query.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_complete_query_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \mbox{\hyperlink{namespace_k_c_l__rosplan}{K\+C\+L\+\_\+rosplan}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_complete_query_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+ros\+::\+Service\+Client \mbox{\hyperlink{_complete_query_8cpp_aab0be60cee9c49fb8d09e77d724c8a7c}{cons\+\_\+client}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+implements the (complete\+\_\+query) action 
+
+@ package \mbox{\hyperlink{namespaceerl2}{erl2}}
+
+\begin{DoxyAuthor}{Author}
+Roberta Reho 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+22/02/2023
+\end{DoxyDate}
+Client Services\+: ~\newline
+ /checkconsistency
+
+Description\+: ~\newline
+ Rosplan action called when the planner dispatches the action (complete\+\_\+query). The callback calls the server of /checkcomplete service 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_complete_query_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{_complete_query_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{CompleteQuery.cpp@{CompleteQuery.cpp}!main@{main}}
+\index{main@{main}!CompleteQuery.cpp@{CompleteQuery.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{_complete_query_8cpp_aab0be60cee9c49fb8d09e77d724c8a7c}\label{_complete_query_8cpp_aab0be60cee9c49fb8d09e77d724c8a7c}} 
+\index{CompleteQuery.cpp@{CompleteQuery.cpp}!cons\_client@{cons\_client}}
+\index{cons\_client@{cons\_client}!CompleteQuery.cpp@{CompleteQuery.cpp}}
+\doxysubsubsection{\texorpdfstring{cons\_client}{cons\_client}}
+{\footnotesize\ttfamily ros\+::\+Service\+Client cons\+\_\+client}
+
