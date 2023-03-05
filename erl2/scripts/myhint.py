@@ -3,7 +3,7 @@
 ## @package erl2
 #  
 #  \file myhint.py
-#  \brief This file implements the behaviour that allows the robot to reach a goal position.
+#  \brief This file implements hints processing node
 #
 #  \author Roberta Reho
 #  \version 1.0

@@ -3,7 +3,7 @@
 ## @package erl2
 #
 #  \file go_to_point.py
-#  \brief This file implements the behaviour that allows the robot to reach a goal position.
+#  \brief This file implements the ROSplan update callback
 #
 #  \author Roberta Reho
 #  \version 1.0
@@ -82,13 +82,7 @@ def knowledge_update():
     update(req) 
     
 
-##
-#	\brief This function is called when the node is started
-#	\param :
-#	\return : None
-# 	
-#	This function initializes all of the needed services, then it calculates a new plan
-#   until the robot is able to fuòòy complete one. 
+
 def main():
     global pub_, active_, act_s
     rospy.init_node('plan_update')
