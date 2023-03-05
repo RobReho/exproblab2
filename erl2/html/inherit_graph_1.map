@@ -1,9 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,173,144,199"/>
-<area shape="rect" id="node2" href="$class_k_c_l__rosplan_1_1_collect_hint_interface.html" title=" " alt="" coords="222,5,403,47"/>
-<area shape="rect" id="node3" href="$class_k_c_l__rosplan_1_1_complete_query_interface.html" title=" " alt="" coords="207,71,418,112"/>
-<area shape="rect" id="node4" href="$class_k_c_l__rosplan_1_1_go_to_next_point_interface.html" title=" " alt="" coords="210,136,415,177"/>
-<area shape="rect" id="node5" href="$class_k_c_l__rosplan_1_1_go_to_oracle_interface.html" title=" " alt="" coords="192,202,433,229"/>
-<area shape="rect" id="node6" href="$class_k_c_l__rosplan_1_1_leave_oracle_interface.html" title=" " alt="" coords="217,253,408,295"/>
-<area shape="rect" id="node7" href="$class_k_c_l__rosplan_1_1_solution_query_interface.html" title=" " alt="" coords="212,319,413,360"/>
-</map>
