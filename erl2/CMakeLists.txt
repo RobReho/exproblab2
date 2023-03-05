@@ -214,7 +214,7 @@ install(DIRECTORY config DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION})
   scripts/go_to_point.py
   scripts/myhint.py
   scripts/armor_debug.py
-  scripts/user_interface.py
+ 
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
