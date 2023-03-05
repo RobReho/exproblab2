@@ -115,6 +115,6 @@
 <node pkg="armor" type="execute" name="armor_service" args="it.emarolab.armor.ARMORMainService"/>
 <!-- nodes -->
 <node name="gotopoint"  pkg="erl2" type="go_to_point.py"/>
-<!--node name="myhint"  pkg="erl2" type="myhint.py" output="screen"/--> 
+<node name="myhint"  pkg="erl2" type="myhint.py" output="screen"/> 
 <node name="plan_update"  pkg="erl2" type="plan_update.py"/>
 </launch>
